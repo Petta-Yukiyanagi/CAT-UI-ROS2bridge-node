@@ -32,12 +32,17 @@ class CatUIBridge(Node):
 
     def on_command(self, msg: CatUICommand):
         tmp = os.path.join(self.ipc_root, 'ui_command.json.tmp')
-        dst = os.path.join(self.ipc_root, 'ui_command.json')
+        # broadcast ディレクトリを使う
+        broadcast_dir = os.path.join(self.ipc_root, 'broadcast')
+        os.makedirs(broadcast_dir, exist_ok=True)
+
+        tmp = os.path.join(broadcast_dir, 'ui_command.json.tmp')
+        dst = os.path.join(broadcast_dir, 'ui_command.json')
 
         data = {
-            'faceId': msg.face_id,
+            'face': int(msg.face_id),
             'text': msg.text,
-            'resetAfter': msg.reset_after
+            'reset_after': int(msg.reset_after)
         }
 
         with open(tmp, 'w', encoding='utf-8') as f:
