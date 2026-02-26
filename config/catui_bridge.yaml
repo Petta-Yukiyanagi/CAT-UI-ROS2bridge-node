@@ -1,0 +1,3 @@
+catui_bridge:
+  ros__parameters:
+    ipc_root: /opt/catui/CAT-UI-ROS2node/data/ipc
