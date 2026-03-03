@@ -15,11 +15,12 @@ setup(
     zip_safe=True,
     maintainer='user',
     maintainer_email='user@todo.todo',
-    description='TODO: Package description',
-    license='TODO: License declaration',
+    description='CAT UI bridge node',
+    license='Apache License 2.0',
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
+            'catui_bridge = catui_bridge.ui_bridge_node:main',
         ],
     },
 )
